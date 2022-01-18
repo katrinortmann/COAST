@@ -120,6 +120,14 @@ COAST will output one file with the original values for each feature and one fil
 
 ### Reproduce Results
 
+The `reproduce-kajuk` parameter is inteded to reproduce the results from Ortmann & Dipper (forthcoming), based on the data set provided in the `/data` folder of this repository. Setting this parameter to `True` will automatically apply the options we used in our study, i.e.,
+
+- `processors` are set to `ellipsisremover`, `bracketremover`, `pronounlemmatizer`
+- `features` are set to `mean_sent, med_sent, mean_word, med_word, subord, coordInit, question, exclam, V:N, lexDens, PRON1st, DEM", DEMshort, PTC, INTERJ`
+- `weights` are set to the default weights given [above](#weights)
+
+This option also adds additional information to the output files, including the expert scores from the corpus and the categorization as oral or literal.
+
 ## References
 
 Vilmos Ágel and Mathilde Hennig (Editors). 2006. *Grammatik aus Nähe und Distanz: Theorie und Praxis am Beispiel von Nähetexten 1650-2000*. Tübingen: Niemeyer.

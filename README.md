@@ -47,6 +47,19 @@ To analyze texts in other formats with COAST, first convert them to one of the t
 
 ### Available Processors
 
+In order to analyze data with COAST, some additional pre-processing may be necessary. The tool comes with three processors that we used to pre-process the KaJuK corpus (Ágel & Hennig 2008) for our analysis in Ortmann & Dipper (forthcoming). For further processors, you may have a look at the [C6C pipeline](https://github.com/rubcompling/C6C).
+
+When specifying processors in the command line, remember to list them in order of application. Also, COAST expects a Python list, so obey the format as stated [above](#usage) with double quotes surrounding the list and single quotes surrounding the processor names.
+
+The available processor names are:
+
+| Processor           |  Description                                    |
+|---------------------|-------------------------------------------------|
+| `ellipsisremover`   |  Removes ellipses from the input data to reflect the actual word count. Ellipsis is identified by the letter `E` in the `type` column. |
+| `bracketremover`    |  Removes brackets from the word form (column `FORM`) to reflect the actual word length. In historical corpora, different types of brackets are often used to signal meta-linguistic attributes like initials, majuscules, hard-to-read or crossed-out words, etc. |
+| `pronounlemmatizer` |  For personal pronouns (`XPOS` is `PPER`) and demonstratives (`XPOS` is `PDS`), the processor maps a range of word forms to a standardized lemma `ich/wir` and `dies(e)/die/der` that is used for the features `PRON1st` and `DEMshort`. This is only necessary if the input data is not lemmatized. |
+
+
 ### Available Features
 
 ### Weights

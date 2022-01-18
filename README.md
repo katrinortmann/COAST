@@ -15,6 +15,18 @@ COAST is a Python tool that automatically analyzes our developed features in a g
 
 ## Usage
 
+From the command line, call COAST with
+
+> py COAST.py analyze -i input_format -p "['processor_name', 'processor_name']" -f feature_file -w weight_file --reproduce-kajuk True input_dir_or_file output_dir
+
+- `input_dir_or_file`: can be a single file or a folder
+- `output_dir`: folder to save the results
+- `input_format`: the following input formats are currently supported: `conlluplus`, `conllu`. For more input formats and documentation, see [below](#input-format).
+- `processor_name`: processors are called in the given order; the following processors are currently supported: `ellipsisremover`, `bracketremover`, `pronounlemmatizer`. For more processors and documentation, see [below](#available-processors).
+- `feature_file`: file containing the list of features to analyze (for more info and available features, see [below](#available-features))
+- `weight_file`: file containing weights to calculate the orality score (for more info, see [below](#weights))
+- `reproduce-kajuk`: default False; overwrites settings to reproduce the results of Ortmann & Dipper (forthcoming) (cf. [below](#reproduce-results))
+
 ### Input Format
 
 ### Available Processors

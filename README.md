@@ -62,6 +62,30 @@ The available processor names are:
 
 ### Available Features
 
+The feature parameter can be used to specify, which features should be included in the analysis. The feature file should contain one feature name per line. If no feature file is given, all supported features are analyzed.
+
+Currently, COAST supports the following features:
+
+| Feature     | Description                               |
+|-------------|-------------------------------------------|
+| `mean_sent` | Mean sentence length                      |
+| `med_sent`  | Median sentence length                      |
+| `mean_word` | Mean word length                      |
+| `med_word`  | Median word length                      |
+| `subord`    | Ratio of subordinating conjunctions (`XPOS` is `KOUS` or `KOUI`) to full verbs (`XPOS` begins with `VV`)                      |
+| `coordInit` | Proportion of sentences beginning with a coordinating conjunction (`XPOS` is `KON`)                      |
+| `question`  | Proportion of interrogative sentences, based on the last punctuation mark of the sentence                      |
+| `exclam`    | Proportion of exclamative sentences, based on the last punctuation mark of the sentence                      |
+| `V:N`       | Ratio of full verbs (`XPOS` begins with `VV`) to nouns (`XPOS` is `NN`)                      |
+| `lexDens`   | Ratio of lexical items (`XPOS` is `ADJ.*`, `ADV`, `N.*` or `VV.*`) to all words                      |
+| `PRON1st`   | Ratio of 1st person pronouns with lemmas (column `LEMMA`) `ich` *‘I’* and `wir` *‘we’* to all words                      |
+| `DEM`       | Ratio of demonstrative pronouns (`XPOS` is `PDS`) to all words                      |
+| `DEMshort`  | Proportion of demonstrative pronouns (`XPOS` is `PDS`) with lemmas (column `LEMMA`) `diese` or `die` *‘this/these’* that are realized as the short form (`LEMMA` is `die`) |
+| `PTC`       | Proportion of answer particles (`XPOS` is `PTKANT`) to all words; includes `ja` *‘yes’*, `gewiss` *‘certainly’*, `nein` *‘no’*, `bitte` *‘please’*, `danke` *‘thanks’* | 
+| `INTERJ`    | Proportion of primary, i.e. one-word interjections (`XPOS` is `ITJ`) to all words; includes `ach, oh, o, bravo, halleluja, hmm, ...`                      |
+
+POS tags are from the STTS tagset (Schiller et al. 1999). Words tagged as punctuation (`XPOS` is one of `$.`, `$,` or `$(`) are ignored except for sentence-type features `question` and `exclam`.
+
 ### Weights
 
 ### Reproduce Results

@@ -29,6 +29,22 @@ From the command line, call COAST with
 
 ### Input Format
 
+The COAST tool provides importers for the [CoNLL-U](https://universaldependencies.org/format.html) and [CoNLL-U Plus](https://universaldependencies.org/ext-format.html) format. Both formats consist of tab-separated columns, which contain the annotated text. For `CoNLL-U` the columns are pre-defined:
+
+```
+ID (word index), FORM (word form), LEMMA (Lemma), UPOS (universal POS-tag), XPOS (language specific POS-tag), FEATS (Morphological features), HEAD (head), DEPREL (dependency relation to the head), DEPS (dependency graph), MISC (other annotation)
+```
+
+Files in the `CoNLL-U Plus` format can contain any desired columns. The order of columns is specified in the first line, e.g.,
+
+```
+# global.columns = ID FORM LEMMA UPOS XPOS FEATS HEAD DEPREL DEPS MISC line norm page type
+```
+
+Columns may be empty, except for the FORM column and also the XPOS column, which is required for most of the orality features.
+
+To analyze texts in other formats with COAST, first convert them to one of the two formats. For conversion, you may consider using [C6C](https://github.com/rubcompling/C6C), a converter for a variety of different input and output formats.
+
 ### Available Processors
 
 ### Available Features

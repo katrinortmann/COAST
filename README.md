@@ -88,6 +88,36 @@ POS tags are from the STTS tagset (Schiller et al. 1999). Words tagged as punctu
 
 ### Weights
 
+The weight parameter can be used to calculate a custom orality score. The weight file should contain key-value pairs, separated by a colon, e.g.,
+
+```
+mean_word : -0.819 
+PRON1st : 0.717 
+V:N : 0.528
+```
+
+Positive values correspond to indicators of orality, negative values to indicators of literal language. The score is calculated by multiplying the [standardized](#standardization) value of each feature with the weight of that feature. Then, the total sum of those products is returned.
+
+If no weight file is specified, the default weights from Ortmann & Dipper (forthcoming) are used:
+
+```
+mean_word : -0.819 
+PRON1st : 0.717 
+V:N : 0.528
+DEMshort : 0.365
+subord : -0.314 
+INTERJ : 0.276 
+DEM : 0.06 
+PTC : 0.104 
+lexDens : -0
+```
+
+### Standardization
+
+In order to compare values of different features like average word length (e.g., 5 letters) and the proportion of interjections (e.g., 0.1%), a linear transformation is applied before the calculation of the orality score. For each feature, the values are mapped to the standardized area between 0 and 1. As no sensible minimum and maximum value can be determined for most features, the lowest value (for a given feature) in the input data is mapped to 0 and the highest value to 1.
+
+COAST will output one file with the original values for each feature and one file with the standardized values that also includes the orality score.
+
 ### Reproduce Results
 
 ## References

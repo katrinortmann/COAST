@@ -62,7 +62,7 @@ The available processor names are:
 
 ### Available Features
 
-The feature parameter can be used to specify, which features should be included in the analysis. The feature file should contain one feature name per line. If no feature file is given, all supported features are analyzed.
+The feature parameter can be used to specify, which features should be included in the analysis. The feature file should contain one feature name per line. An example can be found in the `/config` folder. If no feature file is given, all supported features are analyzed.
 
 Currently, COAST supports the following features:
 
@@ -98,7 +98,7 @@ V:N : 0.528
 
 Positive values correspond to indicators of orality, negative values to indicators of literal language. The score is calculated by multiplying the [standardized](#standardization) value of each feature with the weight of that feature. Then, the total sum of those products is returned.
 
-If no weight file is specified, the default weights from Ortmann & Dipper (forthcoming) are used:
+An example file is located in the `config` folder. If no weight file is specified, the default weights from Ortmann & Dipper (forthcoming) are used:
 
 ```
 mean_word : -0.819 
@@ -120,13 +120,17 @@ COAST will output one file with the original values for each feature and one fil
 
 ### Reproduce Results
 
-The `reproduce-kajuk` parameter is inteded to reproduce the results from Ortmann & Dipper (forthcoming), based on the data set provided in the `/data` folder of this repository. Setting this parameter to `True` will automatically apply the options we used in our study, i.e.,
+The `reproduce-kajuk` parameter is inteded to reproduce the results from Ortmann & Dipper (forthcoming), based on the [data set](#kajuk-data-set) provided in the `/data` folder of this repository. Setting this parameter to `True` will automatically apply the options we used in our study, i.e.,
 
 - `processors` are set to `ellipsisremover`, `bracketremover`, `pronounlemmatizer`
 - `features` are set to `mean_sent, med_sent, mean_word, med_word, subord, coordInit, question, exclam, V:N, lexDens, PRON1st, DEM, DEMshort, PTC, INTERJ`
 - `weights` are set to the default weights given [above](#weights)
 
 This option also adds additional information to the output files, including the expert scores from the corpus and the categorization as oral or literal.
+
+#### KaJuK data set
+
+The `data` folder of this repository contains the KaJuK corpus (Ágel & Hennig 2008, licensed under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)), which we converted to the CoNLL-U Plus format with the [C6C pipeline](https://github.com/rubcompling/C6C). For our study, we added POS tags according to the STTS tagset (Schiller et al. 1999), which are provided in the `XPOS` column. The tags are based on the annotation of different automatic taggers whose individual tags are given in the columns `someweta_web`, `spacy_dep_news`, `spacy_news_md`, `stanza_gsd` and `stanza_hdt`. The estimated overall tagging accuracy is about 88%. For more details on the tagging process, see Ortmann & Dipper (forthcoming). 
 
 ## References
 

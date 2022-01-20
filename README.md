@@ -27,6 +27,8 @@ From the command line, call COAST with
 - `weight_file`: file containing weights to calculate the orality score (for more info, see [below](#weights))
 - `reproduce-kajuk`: default False; overwrites settings to reproduce the results of Ortmann & Dipper (forthcoming) (cf. [below](#reproduce-results))
 
+The first three parameters (`input_dir_or_file`, `output_dir` and `input_format`) are required. The remaining parameters are optional.
+
 ### Input Format
 
 The COAST tool provides importers for the [CoNLL-U](https://universaldependencies.org/format.html) and [CoNLL-U Plus](https://universaldependencies.org/ext-format.html) format. Both formats consist of tab-separated columns, which contain the annotated text. For `CoNLL-U` the columns are pre-defined:
